@@ -1,7 +1,6 @@
 import { useRouter } from "next/router";
 import Image from 'next/image';
 import codingMayImage from './public/git-qr-code.png';
-import qrcodeImage from './public/mail-qr-code.png';
 
 const metaTags = (
     <>
@@ -20,6 +19,7 @@ const metaTags = (
 const ExtraContent = () => {
     return <>
         <div class="flex flex-col items-center">
+            <p class="nx-text-xs font-bold text-center">APT-92</p>
             <Image
                 src={codingMayImage}
                 className="mb-4 rounded-md shadow-lg"
@@ -27,18 +27,7 @@ const ExtraContent = () => {
                 width={180}
                 height={180}
             />
-            <p class="nx-text-xs font-bold text-center">Github</p>
-
             <div class="h-5"></div>
-
-            <Image
-                src={qrcodeImage}
-                className="mb-4 rounded-md shadow-lg"
-                alt=""
-                width={180}
-                height={180}
-            />
-            <p class="nx-text-xs font-bold text-center">Gmail</p>
         </div>
     </>
 }
