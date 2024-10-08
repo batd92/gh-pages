@@ -1,17 +1,17 @@
 @tailwind utilities;
 
 .cards.cards {
-   gap: 2rem;
+    gap: 2rem;
 }
 
 .cards span {
-  margin: auto;
+    margin: auto;
 }
 
 .dark .cards.cards a {
-  border-color: rgb(150, 150, 150);
+    border-color: rgb(150, 150, 150);
 }
 
 .dark .cards.cards a:hover {
-  border-color: white;
+    border-color: white;
 }
