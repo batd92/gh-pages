@@ -1,108 +1,249 @@
+# Hướng dẫn Các lệnh cơ bản trong Linux
 
-# 入门
+## 1. Thông tin hệ thống
+- **`pwd`**
+  - **Mô tả**: Hiển thị đường dẫn thư mục hiện tại.
+  - **Cú pháp**: `pwd`
+  - **Ví dụ**: 
+    ```bash
+    $ pwd
+    /home/user
+    ```
 
-## 创建新项目
+- **`whoami`**
+  - **Mô tả**: Hiển thị tên người dùng đang đăng nhập.
+  - **Cú pháp**: `whoami`
+  - **Ví dụ**: 
+    ```bash
+    $ whoami
+    user
+    ```
 
-要创建一个 Next.js 应用程序，请打开终端，进入您想要存储项目的文件夹，并运行以下命令：
+- **`history`**
+  - **Mô tả**: Hiển thị danh sách các lệnh đã thực hiện trước đó.
+  - **Cú pháp**: `history`
+  - **Ví dụ**: 
+    ```bash
+    $ history
+    ```
 
-```javascript copy
-npx create-next-app@latest nextjs-dashboard --use-npm --example "https://github.com/vercel/next-learn/tree/main/dashboard/starter-example"
-```
+## 2. Quản lý thư mục và file
+- **`cd`**
+  - **Mô tả**: Thay đổi thư mục hiện tại.
+  - **Cú pháp**: `cd [đường dẫn]`
+  - **Ví dụ**: 
+    ```bash
+    $ cd /home/user/Documents
+    ```
 
-该命令使用 [create-next-app](https://nextjs.org/docs/app/api-reference/create-next-app)，这是一个命令行接口（CLI）工具，可以为您设置一个 Next.js 应用程序。在上述命令中，您还使用 `--example` 标志与此课程的入门 [示例](https://github.com/vercel/next-learn/tree/main/dashboard/starter-example) 一起使用。
+- **`ls`**
+  - **Mô tả**: Liệt kê các file và thư mục trong thư mục hiện tại.
+  - **Cú pháp**: `ls [tùy chọn]`
+  - **Ví dụ**: 
+    ```bash
+    $ ls -l
+    ```
 
-## 浏览项目
+- **`mkdir`**
+  - **Mô tả**: Tạo một thư mục mới.
+  - **Cú pháp**: `mkdir [tên thư mục]`
+  - **Ví dụ**: 
+    ```bash
+    $ mkdir new_folder
+    ```
 
-与让您从头编写代码的教程不同，这门课程的大部分代码已经为您编写了。这更好地反映了现实世界的开发，您可能会与现有的代码库一起工作。
+- **`touch`**
+  - **Mô tả**: Tạo một file mới hoặc cập nhật thời gian sửa đổi của file hiện có.
+  - **Cú pháp**: `touch [tên file]`
+  - **Ví dụ**: 
+    ```bash
+    $ touch newfile.txt
+    ```
 
-我们的目标是帮助您专注于学习 Next.js 的主要特性，而无需编写所有应用程序代码。
+- **`rm`**
+  - **Mô tả**: Xóa file hoặc thư mục.
+  - **Cú pháp**: `rm [tên file]`
+  - **Ví dụ**: 
+    ```bash
+    $ rm file.txt
+    ```
 
-安装后，在代码编辑器中打开项目并导航到 `nextjs-dashboard`。
+- **`cp`**
+  - **Mô tả**: Sao chép file hoặc thư mục.
+  - **Cú pháp**: `cp [tên file nguồn] [tên file đích]`
+  - **Ví dụ**: 
+    ```bash
+    $ cp file.txt copy_file.txt
+    ```
 
-让我们花些时间来探索项目。
+- **`mv`**
+  - **Mô tả**: Di chuyển file hoặc thư mục, hoặc đổi tên chúng.
+  - **Cú pháp**: `mv [tên file nguồn] [tên file đích]`
+  - **Ví dụ**: 
+    ```bash
+    $ mv oldfile.txt newfile.txt
+    ```
 
-## 文件夹结构
+## 3. Quản lý quyền truy cập
+- **`chmod`**
+  - **Mô tả**: Thay đổi quyền truy cập của file hoặc thư mục.
+  - **Cú pháp**: `chmod [quyền] [tên file]`
+  - **Ví dụ**: 
+    ```bash
+    $ chmod 755 script.sh
+    ```
 
-您会注意到项目具有以下文件夹结构：
+- **`chown`**
+  - **Mô tả**: Thay đổi chủ sở hữu của file hoặc thư mục.
+  - **Cú pháp**: `chown [người dùng]:[nhóm] [tên file]`
+  - **Ví dụ**: 
+    ```bash
+    $ chown user:group file.txt
+    ```
 
-![](/chapter1-learn-folder-structure.avif)
+## 4. Tìm kiếm và lọc
+- **`find`**
+  - **Mô tả**: Tìm kiếm file và thư mục trong hệ thống.
+  - **Cú pháp**: `find [đường dẫn] -name [tên file]`
+  - **Ví dụ**: 
+    ```bash
+    $ find /home/user -name "*.txt"
+    ```
 
-- `/app`：包含应用程序的所有路由、组件和逻辑，这是您将主要从中工作的地方。
-- `/app/lib`：包含在应用程序中使用的函数，例如可重用的实用函数和数据获取函数。
-- `/app/ui`：包含应用程序的所有 UI 组件，例如卡片、表格和表单。为节省时间，我们已经为您预先样式化了这些组件。
-- `/public`：包含应用程序的所有静态资产，例如图片。
-- `/script/`：包含一个 seeding（这里翻译为 “播种” 可以理解为数据库的 Migration）脚本，您将在后面的章节中使用它来填充您的数据库。
-- `配置文件`：您还会注意到应用程序根目录下有一些配置文件，例如 `next.config.js`。大多数这些文件在使用 `create-next-app`` 启动新项目时会被创建和预配置。在本课程中，您不需要修改它们。
+- **`grep`**
+  - **Mô tả**: Tìm kiếm chuỗi trong file.
+  - **Cú pháp**: `grep [chuỗi] [tên file]`
+  - **Ví dụ**: 
+    ```bash
+    $ grep "hello" file.txt
+    ```
 
-随意探索这些文件夹，如果您还不理解代码正在执行的一切，不用担心。
-## Placeholder data（占位数据）
-在构建用户界面时，使用一些占位数据很有帮助。如果尚未提供数据库或 API，您可以：
+## 5. Quản lý tiến trình
+- **`ps`**
+  - **Mô tả**: Hiển thị thông tin về các tiến trình đang chạy.
+  - **Cú pháp**: `ps [tùy chọn]`
+  - **Ví dụ**: 
+    ```bash
+    $ ps aux
+    ```
 
-- 使用 JSON 格式的占位数据或作为 JavaScript 对象。
-- 使用第三方服务，如 [mockAPI](https://mockapi.io/)。
+- **`kill`**
+  - **Mô tả**: Kết thúc một tiến trình.
+  - **Cú pháp**: `kill [PID]`
+  - **Ví dụ**: 
+    ```bash
+    $ kill 1234
+    ```
 
-对于此项目，我们在 `app/lib/placeholder-data.js` 中提供了一些占位数据。文件中的每个 JavaScript 对象代表数据库中的一张表。例如，对于发票表：
+## 6. Thông tin về đĩa
+- **`df`**
+  - **Mô tả**: Hiển thị thông tin về dung lượng đĩa.
+  - **Cú pháp**: `df [tùy chọn]`
+  - **Ví dụ**: 
+    ```bash
+    $ df -h
+    ```
 
-```javascript showLineNumbers filename="/app/lib/placeholder-data.js" copy
-const invoices = [
-  {
-    customer_id: customers[0].id,
-    amount: 15795,
-    status: 'pending',
-    date: '2022-12-06',
-  },
-  {
-    customer_id: customers[1].id,
-    amount: 20348,
-    status: 'pending',
-    date: '2022-11-14',
-  },
-  // ...
-];
-```
+- **`du`**
+  - **Mô tả**: Kiểm tra dung lượng của file và thư mục.
+  - **Cú pháp**: `du [tùy chọn] [đường dẫn]`
+  - **Ví dụ**: 
+    ```bash
+    $ du -sh /path/to/directory
+    ```
 
-在设置数据库的章节中，您将使用这些数据来填充数据库（用一些初始数据填充它）。
-## TypeScript
-您可能还注意到大多数文件都带有 `.ts` 或 `.tsx` 后缀。这是因为该项目是使用 TypeScript 编写的。我们希望创建一个反映现代 web 环境的课程。
+## 7. Tải và truyền file
+- **`wget`**
+  - **Mô tả**: Tải file từ internet.
+  - **Cú pháp**: `wget [URL]`
+  - **Ví dụ**: 
+    ```bash
+    $ wget http://example.com/file
+    ```
 
-如果您不熟悉 TypeScript，没关系 - 在需要时，我们将提供 TypeScript 代码片段。
+- **`curl`**
+  - **Mô tả**: Gửi yêu cầu HTTP và lấy thông tin từ web.
+  - **Cú pháp**: `curl [URL]`
+  - **Ví dụ**: 
+    ```bash
+    $ curl http://example.com
+    ```
 
-现在，请查看 `/app/lib/definitions.ts` 文件。在这里，我们手动定义了将从数据库返回的类型。例如，发票表具有以下类型：
+- **`scp`**
+  - **Mô tả**: Sao chép file giữa các máy tính qua SSH.
+  - **Cú pháp**: `scp [tên file] [user@host:/path/to/destination]`
+  - **Ví dụ**: 
+    ```bash
+    $ scp file.txt user@remotehost:/path/to/destination
+    ```
 
-```javascript showLineNumbers filename="/app/lib/definitions.ts" copy
-export type Invoice = {
-  id: string;
-  customer_id: string;
-  amount: number;
-  date: string;
-  // In TypeScript, this is called a string union type.
-  // It means that the "status" property can only be one of the two strings: 'pending' or 'paid'.
-  status: 'pending' | 'paid';
-};
-```
+## 8. Nén và giải nén
+- **`tar`**
+  - **Mô tả**: Nén và giải nén file.
+  - **Cú pháp**: 
+    - Nén: `tar -cvf [tên archive] [tên thư mục]`
+    - Giải nén: `tar -xvf [tên archive]`
+  - **Ví dụ**: 
+    ```bash
+    $ tar -cvf archive.tar directory
+    $ tar -xvf archive.tar
+    ```
 
-通过使用 TypeScript，您可以确保不会意外地将错误的数据格式传递给组件或数据库，比如将 `number` 类型传递给发票 `amount` 属性而不是 `string` 类型。
+## 9. Trình soạn thảo văn bản
+- **`nano`**
+  - **Mô tả**: Trình soạn thảo văn bản đơn giản.
+  - **Cú pháp**: `nano [tên file]`
+  - **Ví dụ**: 
+    ```bash
+    $ nano file.txt
+    ```
 
-如果您是 TypeScript 开发者：
+- **`vim`**
+  - **Mô tả**: Trình soạn thảo văn bản mạnh mẽ.
+  - **Cú pháp**: `vim [tên file]`
+  - **Ví dụ**: 
+    ```bash
+    $ vim file.txt
+    ```
 
-- 我们手动声明数据类型，但为了更好的类型安全性，我们建议使用 [Prisma](https://www.prisma.io/)，它会根据数据库架构自动生成类型。
-- Next.js 会检测到您的项目使用 TypeScript，并自动安装必要的软件包和配置。Next.js 还为您的代码编辑器提供了一个 [TypeScript 插件](https://nextjs.org/docs/app/building-your-application/configuring/typescript#typescript-plugin)，以帮助自动完成和提供类型安全性。
+## 10. Kết nối từ xa
+- **`ssh`**
+  - **Mô tả**: Kết nối đến máy chủ từ xa qua giao thức SSH.
+  - **Cú pháp**: `ssh [user@host]`
+  - **Ví dụ**: 
+    ```bash
+    $ ssh user@192.168.1.1
+    ```
 
-## 运行开发服务器
+## Bài tập thực hành
 
-运行 `npm i` 来安装项目的软件包。
+1. **Tạo và quản lý thư mục**
+   - Tạo một thư mục có tên `test_folder`.
+   - Bên trong thư mục `test_folder`, tạo ba file có tên `file1.txt`, `file2.txt`, và `file3.txt`.
+   - Liệt kê các file trong `test_folder`.
 
-```javascript copy
-npm i
-```
+2. **Sao chép và di chuyển**
+   - Sao chép `file1.txt` thành `file1_copy.txt`.
+   - Di chuyển `file2.txt` vào thư mục cha.
 
-然后运行 `npm run dev` 来启动开发服务器。
+3. **Chỉnh sửa file**
+   - Mở `file1.txt` bằng `nano` hoặc `vim` và thêm một vài dòng văn bản vào file.
+   - Lưu và thoát khỏi trình soạn thảo.
 
-```javascript copy
-npm run dev
-```
+4. **Thay đổi quyền truy cập**
+   - Thay đổi quyền truy cập của `file3.txt` thành chỉ đọc cho người khác.
 
-`npm run dev` 会在端口 3000 上启动您的 Next.js 开发服务器。让我们检查一下它是否工作。在浏览器中打开 [http://localhost:3000](http://localhost:3000)。您的首页应该如下所示：
+5. **Tìm kiếm file**
+   - Tìm kiếm tất cả các file `.txt` trong `test_folder`.
 
-![](/chapter1-acme-unstyled.avif)
+6. **Xóa file và thư mục**
+   - Xóa `file1_copy.txt`.
+   - Xóa thư mục `test_folder` cùng với tất cả nội dung bên trong.
+
+7. **Kết nối SSH**
+   - Nếu bạn có một máy chủ SSH, hãy thử kết nối tới nó bằng lệnh `ssh`.
+
+### Ghi chú
+- Hãy chắc chắn rằng bạn đã cài đặt các công cụ cần thiết (như `nano`, `vim`, `wget`, v.v.) trên hệ thống của bạn.
+- Đọc kỹ thông báo khi thực hiện các lệnh, đặc biệt là các lệnh xóa như `rm`, để tránh mất dữ liệu không mong muốn.
 
