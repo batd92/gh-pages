@@ -10,8 +10,8 @@ const metaTags = (
             content="Welcome to batd92"
         />
         <meta name="keywords" content="batd, docker, nest, ai, ci/cd, node, typescript, redis, php, mongodb" />
-        <meta property="og:title" content="Learn" />
-        <meta property="og:description" content="Learn Information Technology" />
+        <meta property="og:title" content="APT-92" />
+        <meta property="og:description" content="apt-92, ci/cd" />
         <meta property="og:image" content="/chapter0-dashboard.avif" />
     </>
 );
@@ -20,6 +20,8 @@ const ExtraContent = () => {
     return <>
         <div class="flex flex-col items-center">
             <p class="nx-text-xs font-bold text-center">APT-92</p>
+            <br>
+            </br>
             <Image
                 src={codingMayImage}
                 className="mb-4 rounded-md shadow-lg"
@@ -55,12 +57,12 @@ const config = {
         const { asPath } = useRouter();
         if (asPath === "/") {
             return {
-                titleTemplate: "Learn Information Technology",
+                titleTemplate: "APT-92",
             };
         }
 
         return {
-            titleTemplate: "%s - Learn Information Technology",
+            titleTemplate: "%s - APT-92",
         };
     },
     gitTimestamp: null,
