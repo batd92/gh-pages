@@ -1,64 +1,46 @@
 import FollowMe from './components/follow-me.jsx';
 
-# Chào mừng bạn đến với hướng dẫn học Next.js
+# DevOps Courses
 
-Khi phát hành phiên bản Next.js v14, ngoài các bản cập nhật phiên bản thông thường, một khóa học miễn phí dựa trên kiến trúc App Router cũng đã được phát hành, giúp bạn hiểu rõ hơn về các tính năng chính của Next.js thông qua việc xây dựng ứng dụng web toàn diện.
-
-Chuỗi bài học này là một bản dịch từ tiếng Trung của [hướng dẫn chính thức](https://nextjs.org/learn). Trong quá trình dịch và biên soạn, mã ví dụ tương ứng với mỗi chương đã được tác giả kiểm tra.
+Khóa học DevOps này sẽ cung cấp cho bạn những kiến thức và kỹ năng cần thiết để triển khai, quản lý và tối ưu hóa quy trình phát triển phần mềm. Bạn sẽ được hướng dẫn từng bước để xây dựng và triển khai ứng dụng theo phương pháp DevOps.
 
 ## Những gì chúng ta sẽ làm
 
 ![](/chapter0-dashboard.avif)
 
-Trong khóa học này, chúng ta sẽ xây dựng một phiên bản đơn giản của Dashboard tài chính, bao gồm các nội dung sau:
+Trong khóa học, chúng ta sẽ khám phá:
 
-* Một trang chính công cộng.
-* Một trang đăng nhập.
-* Trang Dashboard được bảo vệ bằng xác thực.
-* Người dùng có thể thêm, chỉnh sửa và xóa hóa đơn.
-
-Dashboard này cũng sẽ có một cơ sở dữ liệu tương ứng, và chúng ta sẽ thiết lập nó trong các chương sau.
-
-Thông qua khóa học này, bạn sẽ nắm vững các kỹ năng cơ bản cần thiết để xây dựng ứng dụng Next.js toàn diện.
+* Cài đặt và cấu hình môi trường phát triển.
+* Sử dụng các lệnh Linux thông dụng để quản lý hệ thống.
+* Quản lý mã nguồn với Git và GitLab.
+* Thiết lập quy trình CI/CD để tự động hóa triển khai ứng dụng.
+* Triển khai ứng dụng trong môi trường Docker và các dịch vụ liên quan.
+* Giám sát hiệu suất ứng dụng và hệ thống.
 
 ## Tóm tắt
 
-Dưới đây là các tính năng bạn sẽ học được trong khóa học này:
+Dưới đây là những kiến thức bạn sẽ học được trong khóa học này:
 
-* **Định dạng**: Các phương pháp khác nhau để định dạng ứng dụng trong Next.js.
-* **Tối ưu hóa**: Cách tối ưu hóa hình ảnh, liên kết và phông chữ.
-* **Định tuyến**: Tạo bố cục và trang lồng nhau bằng cách sử dụng định tuyến hệ thống tệp.
-* **Lấy dữ liệu**: Cách thiết lập cơ sở dữ liệu trên Vercel, cũng như các thực hành tốt nhất cho việc lấy và truyền dữ liệu.
-* **Tìm kiếm và phân trang**: Cách sử dụng tham số tìm kiếm URL để thực hiện tìm kiếm và phân trang.
-* **Biến đổi dữ liệu**: Cách sử dụng React Server Actions để thao tác dữ liệu và xác thực lại bộ nhớ đệm của Next.js.
-* **Xử lý lỗi**: Cách xử lý lỗi chung và lỗi 404 không tìm thấy.
-* **Xác thực biểu mẫu và khả năng truy cập**: Cách thực hiện xác thực biểu mẫu phía máy chủ và các mẹo để cải thiện khả năng truy cập.
-* **Xác thực**: Cách thêm xác thực cho ứng dụng bằng [NextAuth.js](https://next-auth.js.org/) và middleware.
-* **Siêu dữ liệu**: Cách thêm siêu dữ liệu và chuẩn bị ứng dụng của bạn cho việc chia sẻ trên mạng xã hội.
+* **Cài đặt Linux**: Hướng dẫn cài đặt và cấu hình Ubuntu Server, lựa chọn giữa mạng bridge và NAT.
+* **Lệnh Linux**: Khám phá các lệnh cơ bản giúp bạn quản lý hệ thống hiệu quả.
+* **Quản lý mã nguồn**: Sử dụng Git để quản lý mã nguồn và áp dụng Git workflow.
+* **CI/CD**: Tìm hiểu CI/CD và triển khai quy trình tự động hóa với GitLab và Jenkins.
+* **Docker**: Hướng dẫn sử dụng Docker để container hóa ứng dụng và cài đặt Docker registry.
+* **Giám sát**: Thiết lập công cụ giám sát như Zabbix để theo dõi hiệu suất ứng dụng.
 
 ## Kiến thức cần thiết
 
-Khóa học này giả định rằng bạn có hiểu biết cơ bản về React và JavaScript. Nếu bạn là người mới bắt đầu với React, chúng tôi khuyên bạn nên hoàn thành khóa học cơ bản về React trước để học [các kiến thức cơ bản về React](https://nextjs.org/learn/react-foundations), chẳng hạn như thành phần, props, state và hooks, cũng như các tính năng mới như Server Components và Suspense.
-
-## Yêu cầu hệ thống
-
-Trước khi bắt đầu khóa học này, hãy đảm bảo rằng hệ thống của bạn đáp ứng các yêu cầu sau:
-
-* Cài đặt Node.js phiên bản 18.17.0 hoặc cao hơn. [Liên kết tải về](https://nodejs.org/en)
-* Hệ điều hành: macOS, Windows (bao gồm WSL) hoặc Linux.
-
-Ngoài ra, bạn cũng cần một tài khoản GitHub và một tài khoản Vercel. (Vercel được sử dụng để triển khai, nếu dịch vụ chỉ chạy trên máy cục bộ cho việc học, tài khoản Vercel cũng không phải là bắt buộc).
+Khóa học này yêu cầu bạn có kiến thức cơ bản về Linux và Git. Nếu bạn chưa quen với các khái niệm này, hãy xem xét việc tham khảo các tài liệu cơ bản trước khi bắt đầu.
 
 ## Tham gia thảo luận
 
-Nếu bạn có câu hỏi về khóa học này hoặc muốn cung cấp phản hồi, bạn có thể đặt câu hỏi qua các kênh sau:
-* [Next.js Discord](https://discord.com/)
+Nếu bạn có câu hỏi về khóa học hoặc muốn cung cấp phản hồi, hãy tham gia vào các kênh thảo luận sau:
+* [DevOps Discord](https://discord.com/)
 
 <br />
-<div className="text-center">
+<div className="text-left">
   Nếu hướng dẫn này có thể giúp bạn, hãy cho tôi **[APT-92](https://github.com/batd92)** một ★ để ủng hộ!
 </div>
 
 <FollowMe />
 <br />
-
