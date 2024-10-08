@@ -1,6 +1,6 @@
 # Hướng dẫn Các lệnh cơ bản trong Linux
 
-## 1. Thông tin hệ thống
+## Thông tin hệ thống
 - **`pwd`**
   - **Mô tả**: Hiển thị đường dẫn thư mục hiện tại.
   - **Cú pháp**: `pwd`
@@ -27,7 +27,7 @@
     $ history
     ```
 
-## 2. Quản lý thư mục và file
+## Quản lý thư mục và file
 - **`cd`**
   - **Mô tả**: Thay đổi thư mục hiện tại.
   - **Cú pháp**: `cd [đường dẫn]`
@@ -84,7 +84,7 @@
     $ mv oldfile.txt newfile.txt
     ```
 
-## 3. Quản lý quyền truy cập
+## Quản lý quyền truy cập
 - **`chmod`**
   - **Mô tả**: Thay đổi quyền truy cập của file hoặc thư mục.
   - **Cú pháp**: `chmod [quyền] [tên file]`
@@ -101,7 +101,7 @@
     $ chown user:group file.txt
     ```
 
-## 4. Tìm kiếm và lọc
+## Tìm kiếm và lọc
 - **`find`**
   - **Mô tả**: Tìm kiếm file và thư mục trong hệ thống.
   - **Cú pháp**: `find [đường dẫn] -name [tên file]`
@@ -118,7 +118,7 @@
     $ grep "hello" file.txt
     ```
 
-## 5. Quản lý tiến trình
+## Quản lý tiến trình
 - **`ps`**
   - **Mô tả**: Hiển thị thông tin về các tiến trình đang chạy.
   - **Cú pháp**: `ps [tùy chọn]`
@@ -135,7 +135,7 @@
     $ kill 1234
     ```
 
-## 6. Thông tin về đĩa
+## Thông tin về đĩa
 - **`df`**
   - **Mô tả**: Hiển thị thông tin về dung lượng đĩa.
   - **Cú pháp**: `df [tùy chọn]`
@@ -152,7 +152,7 @@
     $ du -sh /path/to/directory
     ```
 
-## 7. Tải và truyền file
+## Tải và truyền file
 - **`wget`**
   - **Mô tả**: Tải file từ internet.
   - **Cú pháp**: `wget [URL]`
@@ -177,7 +177,7 @@
     $ scp file.txt user@remotehost:/path/to/destination
     ```
 
-## 8. Nén và giải nén
+## Nén và giải nén
 - **`tar`**
   - **Mô tả**: Nén và giải nén file.
   - **Cú pháp**: 
@@ -189,7 +189,7 @@
     $ tar -xvf archive.tar
     ```
 
-## 9. Trình soạn thảo văn bản
+## Trình soạn thảo văn bản
 - **`nano`**
   - **Mô tả**: Trình soạn thảo văn bản đơn giản.
   - **Cú pháp**: `nano [tên file]`
@@ -206,7 +206,7 @@
     $ vim file.txt
     ```
 
-## 10. Kết nối từ xa
+## Kết nối từ xa
 - **`ssh`**
   - **Mô tả**: Kết nối đến máy chủ từ xa qua giao thức SSH.
   - **Cú pháp**: `ssh [user@host]`
@@ -217,49 +217,45 @@
 
 ## Bài tập thực hành
 
-### 1. Tạo và quản lý thư mục
-- Tạo một thư mục có tên `test_folder`.
-- Bên trong thư mục `test_folder`, tạo ba file có tên `file1.txt`, `file2.txt`, và `file3.txt`.
-- Liệt kê các file trong `test_folder`.
-- Tạo một thư mục con trong `test_folder` có tên `sub_folder`.
+-**`Tạo và quản lý thư mục`**
+  - Tạo một thư mục có tên `test_folder`.
+  - Bên trong thư mục `test_folder`, tạo ba file có tên `file1.txt`, `file2.txt`, và `file3.txt`.
+  - Liệt kê các file trong `test_folder`.
+  - Tạo một thư mục con trong `test_folder` có tên `sub_folder`.
 
-### 2. Sao chép, di chuyển và xóa
-- Sao chép `file1.txt` thành `file1_copy.txt` trong cùng thư mục.
-- Di chuyển `file2.txt` vào thư mục cha.
-- Xóa `file3.txt` và xác nhận rằng nó đã bị xóa.
+-**`Sao chép, di chuyển và xóa`**
+  - Sao chép `file1.txt` thành `file1_copy.txt` trong cùng thư mục.
+  - Di chuyển `file2.txt` vào thư mục cha.
+  - Xóa `file3.txt` và xác nhận rằng nó đã bị xóa.
 
-### 3. Chỉnh sửa file
-- Mở `file1.txt` bằng `nano` hoặc `vim` và thêm một vài dòng văn bản vào file.
-- Lưu và thoát khỏi trình soạn thảo.
-- Tạo một file mới có tên `notes.txt` và ghi lại nội dung bạn đã thêm vào `file1.txt`.
+-**`Chỉnh sửa file`**
+  - Mở `file1.txt` bằng `nano` hoặc `vim` và thêm một vài dòng văn bản vào file.
+  - Lưu và thoát khỏi trình soạn thảo.
+  - Tạo một file mới có tên `notes.txt` và ghi lại nội dung bạn đã thêm vào `file1.txt`.
 
-### 4. Thay đổi quyền truy cập
-- Thay đổi quyền truy cập của `file3.txt` (đã xóa) thành chỉ đọc cho người khác.
-- Tạo lại `file3.txt` và áp dụng quyền truy cập đã thay đổi.
+-**`Thay đổi quyền truy cập`**
+  - Thay đổi quyền truy cập của `file3.txt` (đã xóa) thành chỉ đọc cho người khác.
+  - Tạo lại `file3.txt` và áp dụng quyền truy cập đã thay đổi.
 
-### 5. Tìm kiếm file
-- Tìm kiếm tất cả các file `.txt` trong `test_folder` và xuất kết quả ra file `search_results.txt`.
+-**`Tìm kiếm file
+  - Tìm kiếm tất cả các file `.txt` trong `test_folder` và xuất kết quả ra file `search_results.txt`.
 
-### 6. Nén và giải nén
-- Nén `test_folder` thành file `test_folder.tar.gz`.
-- Giải nén `test_folder.tar.gz` vào một thư mục mới có tên `unzipped_folder`.
+**`Nén và giải nén`**
+  - Nén `test_folder` thành file `test_folder.tar.gz`.
+  - Giải nén `test_folder.tar.gz` vào một thư mục mới có tên `unzipped_folder`.
 
-### 7. Quản lý tiến trình
-- Mở một terminal mới và chạy một chương trình như `top` hoặc `htop` để xem các tiến trình đang chạy.
-- Ghi lại ID tiến trình (PID) của một chương trình đang chạy và sử dụng lệnh `kill` để kết thúc tiến trình đó.
+-**`Quản lý tiến trình`**
+  - Mở một terminal mới và chạy một chương trình như `top` hoặc `htop` để xem các tiến trình đang chạy.
+  - Ghi lại ID tiến trình (PID) của một chương trình đang chạy và sử dụng lệnh `kill` để kết thúc tiến trình đó.
 
-### 8. Kết nối SSH
-- Nếu bạn có một máy chủ SSH, hãy thử kết nối tới nó bằng lệnh `ssh`.
-- Sau khi kết nối, tạo một file có tên `remote_file.txt` trên máy chủ từ xa và thêm một số nội dung vào đó.
+-**`Kết nối SSH`**
+  - Nếu bạn có một máy chủ SSH, hãy thử kết nối tới nó bằng lệnh `ssh`.
+  - Sau khi kết nối, tạo một file có tên `remote_file.txt` trên máy chủ từ xa và thêm một số nội dung vào đó.
 
-### 9. Tạo script tự động
-- Viết một script shell đơn giản (ví dụ: `backup.sh`) để tự động sao chép các file `.txt` từ `test_folder` sang một thư mục `backup_folder` (tạo thư mục này nếu chưa có).
-- Chạy script và xác nhận rằng các file đã được sao chép thành công.
+-**`Tạo script tự động`**
+  - Viết một script shell đơn giản (ví dụ: `backup.sh`) để tự động sao chép các file `.txt` từ `test_folder` sang một thư mục `backup_folder` (tạo thư mục này nếu chưa có).
+  - Chạy script và xác nhận rằng các file đã được sao chép thành công.
 
-### 10. Quản lý file với `find` và `grep`
-- Sử dụng lệnh `find` để tìm kiếm tất cả các file trong `test_folder` có kích thước lớn hơn 1KB.
-- Sử dụng `grep` để tìm kiếm một chuỗi cụ thể trong tất cả các file `.txt` trong `test_folder`.
-
-### Ghi chú
-- Hãy chắc chắn rằng bạn đã cài đặt các công cụ cần thiết (như `nano`, `vim`, `wget`, v.v.) trên hệ thống của bạn.
-- Đọc kỹ thông báo khi thực hiện các lệnh, đặc biệt là các lệnh xóa như `rm`, để tránh mất dữ liệu không mong muốn.
+-**`Quản lý file với `find` và `grep``**
+  - Sử dụng lệnh `find` để tìm kiếm tất cả các file trong `test_folder` có kích thước lớn hơn 1KB.
+  - Sử dụng `grep` để tìm kiếm một chuỗi cụ thể trong tất cả các file `.txt` trong `test_folder`.
