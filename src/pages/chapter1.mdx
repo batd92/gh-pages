@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 
 # 入门
 
@@ -106,3 +107,50 @@ npm run dev
 
 ![](/chapter1-acme-unstyled.avif)
 
+=======
+# Caì đặt Vagrant, VirtualBox Để Tạo Máy Ảo Ubuntu (MacOS)
+
+## Vagrant
+  - **Install**: 
+    ```copy
+    brew install --cask vagrant
+    ```
+
+  - **Check version**: 
+    ```copy
+    vagrant --version
+    ```
+
+## VirtualBox
+
+  - **Note**:  Please install one of the supported versions listed below to use Vagrant: 4.0, 4.1, 4.2, 4.3, 5.0, 5.1, 5.2, 6.0, 6.1, 7.0
+  - **Install**: 
+    ```copy
+    brew install --cask virtualbox
+    ```
+
+  - **Check version**: 
+    ```copy
+    VBoxManage --version
+    ```
+
+
+## Cấu hình Máy Ảo Ubuntu
+
+  - **Cấu hình file Vagrant ***
+    ```
+    Vagrant.configure("2") do |config|
+      config.vm.box = "ubuntu/bionic64" # Chọn bản Ubuntu truy cập link: https://portal.cloud.hashicorp.com/vagrant/discover
+      config.vm.network "private_network", type: "dhcp" # Mạng nội bộ
+      config.vm.provider "virtualbox" do |vb|
+        vb.memory = "2048" # Số RAM cho máy ảo
+        vb.cpus = 2 # Số CPU cho máy ảo
+      end
+    end
+  ```
+
+  - ** Run Vagrant ***
+    ```
+    vagrant up --provider=virtualbox
+    ```
+>>>>>>> Stashed changes

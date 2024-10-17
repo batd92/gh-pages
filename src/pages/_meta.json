@@ -5,8 +5,13 @@
             "breadcrumb": false
         }
     },
+<<<<<<< Updated upstream
     "chapter1": "Chapter 1: Getting Started",
     "chapter2": "Chapter 2: CSS Styles",
+=======
+    "chapter1": "Chapter 1: Setup Ubuntu",
+    "chapter2": "Chapter 2: Các lệnh cơ bản",
+>>>>>>> Stashed changes
     "chapter3": "Chapter 3: Optimizing Fonts and Images",
     "chapter4": "Chapter 4: Creating Layouts and Pages",
     "chapter5": "Chapter 5: Navigation Between Pages",

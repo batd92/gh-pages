@@ -1,185 +1,275 @@
-import QuizComponent from './components/quiz-component';
+# Hướng dẫn Các lệnh cơ bản trong Linux
 
-# CSS 样式
+## Thông tin hệ thống
+- **`pwd`**
+  - **Mô tả**: Hiển thị đường dẫn thư mục hiện tại.
+  - **Cú pháp**: `pwd`
+  - **Ví dụ**: 
+    ```copy
+    $ pwd
+    /home/user
+    ```
 
-当前，您的首页没有任何样式。让我们看看为 Next.js 应用程序添加样式的不同方法。
+- **`whoami`**
+  - **Mô tả**: Hiển thị tên người dùng đang đăng nhập.
+  - **Cú pháp**: `whoami`
+  - **Ví dụ**: 
+    ```copy
+    $ whoami
+    user
+    ```
 
-以下是本章中将涵盖的主题：
+- **`history`**
+  - **Mô tả**: Hiển thị danh sách các lệnh đã thực hiện trước đó.
+  - **Cú pháp**: `history`
+  - **Ví dụ**: 
+    ```copy
+    $ history
+    ```
 
-* 如何向应用程序添加全局 CSS 文件。
-* 两种不同的样式方式：Tailwind 和 CSS Modules。
-* 如何使用 clsx 实用程序包有条件地添加类名。
+## Quản lý thư mục và file
+- **`cd`**
+  - **Mô tả**: Thay đổi thư mục hiện tại.
+  - **Cú pháp**: `cd [đường dẫn]`
+  - **Ví dụ**: 
+    ```copy
+    $ cd /home/user/Documents
+    ```
 
-## 全局样式
+- **`ls`**
+  - **Mô tả**: Liệt kê các file và thư mục trong thư mục hiện tại.
+  - **Cú pháp**: `ls [tùy chọn]`
+  - **Ví dụ**: 
+    ```copy
+    $ ls -l
+    ```
 
-如果您查看 `/app/ui` 文件夹内，您会看到一个名为 `global.css` 的文件。您可以使用此文件向应用程序的所有路由添加 CSS 规则，例如 CSS 重置规则、用于链接等 HTML 元素的全局样式等。
+- **`mkdir`**
+  - **Mô tả**: Tạo một thư mục mới.
+  - **Cú pháp**: `mkdir [tên thư mục]`
+  - **Ví dụ**: 
+    ```copy
+    $ mkdir new_folder
+    ```
 
-您可以在应用程序中的任何组件中导入 `global.css`，但通常最好的做法是将其添加到顶级组件中。在 Next.js 中，这就是根布局（稍后会详细介绍）。
+- **`touch`**
+  - **Mô tả**: Tạo một file mới hoặc cập nhật thời gian sửa đổi của file hiện có.
+  - **Cú pháp**: `touch [tên file]`
+  - **Ví dụ**: 
+    ```copy
+    $ touch newfile.txt
+    ```
 
-在 `/app/layout.tsx` 文件内导入 `global.css` 样式文件，将全局样式添加到您的应用程序：
+- **`rm`**
+  - **Mô tả**: Xóa file hoặc thư mục.
+  - **Cú pháp**: `rm [tên file]`
+  - **Ví dụ**: 
+    ```copy
+    $ rm file.txt
+    ```
 
-```js showLineNumbers {1} filename="/app/layout.tsx" copy
-import '@/app/ui/global.css';
- 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  return (
-    <html lang="en">
-      <body>{children}</body>
-    </html>
-  );
-}
-```
+- **`cp`**
+  - **Mô tả**: Sao chép file hoặc thư mục.
+  - **Cú pháp**: `cp [tên file nguồn] [tên file đích]`
+  - **Ví dụ**: 
+    ```copy
+    $ cp file.txt copy_file.txt
+    ```
 
-保存更改并在浏览器中预览。您的首页现在应该如下所示：
+- **`mv`**
+  - **Mô tả**: Di chuyển file hoặc thư mục, hoặc đổi tên chúng.
+  - **Cú pháp**: `mv [tên file nguồn] [tên file đích]`
+  - **Ví dụ**: 
+    ```copy
+    $ mv oldfile.txt newfile.txt
+    ```
 
-![](/chapter2-home-page-with-tailwind.avif)
+## Quản lý quyền truy cập
 
-但等一下，您并没有添加任何 CSS 规则，样式是从哪里来的？
+- **`ls -l [file/thư mục]`**
+  - **Mô tả**: Xem thông tin của file hoặc thư mục.
+  - **Chi tiết**: 
+    Ký tự đầu tiên: loại tệp
+      -: tệp bình thường
+      d: thư mục
+      l: liên kết mềm (symbolic link)
+    9 ký tự tiếp theo được chia thành ba nhóm, mỗi nhóm gồm 3 ký tự:
+      Người sở hữu (owner): quyền của người sở hữu tệp
+      Nhóm (group): quyền của nhóm người dùng
+      Người dùng khác (others): quyền của những người không thuộc nhóm và không phải là người sở hữu
 
-如果您查看 `global.css` 内部，您会注意到一些 `@tailwind` 指令：
+- **`chmod`**
+  - **Mô tả**: Thay đổi quyền truy cập của file hoặc thư mục.
+  - **Quyền**: 4: đọc (tương ứng với r), 2: ghi (tương ứng với w), 1: thực thi (tương ứng với x)
+  - **Cú pháp**: `chmod [quyền] [tên file]`
+  - **Ví dụ**: 
+    ```copy
+    $ chmod 755 script.sh
+    ```
 
-```css showLineNumbers filename="/app/ui/global.css" copy
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-```
+- **`chown`**
+  - **Mô tả**: Thay đổi chủ sở hữu của file hoặc thư mục.
+  - **Cú pháp**: `chown [người dùng]:[nhóm] [tên file]`
+  - **Ví dụ**: 
+    ```copy
+    $ chown user:group file.txt
+    ```
 
-## Tailwind
+## Tìm kiếm và lọc
+- **`find`**
+  - **Mô tả**: Tìm kiếm file và thư mục trong hệ thống.
+  - **Cú pháp**: `find [đường dẫn] -name [tên file]`
+  - **Ví dụ**: 
+    ```copy
+    $ find /home/user -name "*.txt"
+    ```
 
-[Tailwind](https://tailwindcss.com/) 是一个 CSS 框架，通过允许您在 TSX 标记中直接快速编写[实用类](https://tailwindcss.com/docs/utility-first)，加速开发过程。
+- **`grep`**
+  - **Mô tả**: Tìm kiếm chuỗi trong file.
+  - **Cú pháp**: `grep [chuỗi] [tên file]`
+  - **Ví dụ**: 
+    ```copy
+    $ grep "hello" file.txt
+    ```
 
-在 Tailwind 中，您通过添加类名来为元素添加样式。例如，添加类 `"text-blue-500"` 将使 `<h1>` 文本变成蓝色：
+## Quản lý tiến trình
+- **`ps`**
+  - **Mô tả**: Hiển thị thông tin về các tiến trình đang chạy.
+  - **Cú pháp**: `ps [tùy chọn]`
+  - **Ví dụ**: 
+    ```copy
+    $ ps aux
+    ```
 
-```html copy
-<h1 className="text-blue-500">I'm blue!</h1>
-```
+- **`kill`**
+  - **Mô tả**: Kết thúc một tiến trình.
+  - **Cú pháp**: `kill [PID]`
+  - **Ví dụ**: 
+    ```copy
+    $ kill 1234
+    ```
 
-尽管 CSS 样式在全局共享，但每个类都是单独应用于每个元素。这意味着如果您添加或删除一个元素，您不必担心维护单独的样式表、样式冲突或者随着应用程序规模扩大而增加 CSS 捆绑的大小。
+## Thông tin về đĩa
+- **`df`**
+  - **Mô tả**: Hiển thị thông tin về dung lượng đĩa.
+  - **Cú pháp**: `df [tùy chọn]`
+  - **Ví dụ**: 
+    ```copy
+    $ df -h
+    ```
 
-当您使用 `create-next-app` 启动新项目时，Next.js 会询问您是否要使用 Tailwind。如果选择 `Yes`，Next.js 将自动安装必要的包并在您的应用程序中配置 Tailwind。
+- **`du`**
+  - **Mô tả**: Kiểm tra dung lượng của file và thư mục.
+  - **Cú pháp**: `du [tùy chọn] [đường dẫn]`
+  - **Ví dụ**: 
+    ```copy
+    $ du -sh /path/to/directory
+    ```
 
-如果您查看 `/app/page.tsx`，您将看到我们在示例中使用 Tailwind 类。
+## Tải và truyền file
+- **`wget`**
+  - **Mô tả**: Tải file từ internet.
+  - **Cú pháp**: `wget [URL]`
+  - **Ví dụ**: 
+    ```copy
+    $ wget http://example.com/file
+    ```
 
-```jsx showLineNumbers filename="/app/page.tsx" copy
-import AcmeLogo from '@/app/ui/acme-logo';
-import Link from 'next/link';
- 
-export default function Page() {
-  return (
-    // These are Tailwind classes:
-    <main className="flex min-h-screen flex-col p-6">
-      <div className="flex h-20 shrink-0 items-end rounded-lg bg-blue-500 p-4 md:h-52">
-    // ...
-  )
-}
-```
+- **`curl`**
+  - **Mô tả**: Gửi yêu cầu HTTP và lấy thông tin từ web.
+  - **Cú pháp**: `curl [URL]`
+  - **Ví dụ**: 
+    ```copy
+    $ curl http://example.com
+    ```
 
-如果这是您第一次使用 Tailwind，请不要担心。为了节省时间，我们已经为您样式化了所有要使用的组件。
+- **`scp`**
+  - **Mô tả**: Sao chép file giữa các máy tính qua SSH.
+  - **Cú pháp**: `scp [tên file] [user@host:/path/to/destination]`
+  - **Ví dụ**: 
+    ```copy
+    $ scp file.txt user@remotehost:/path/to/destination
+    ```
 
-让我们玩一下 Tailwind！复制下面的代码并将其粘贴到 `/app/page.tsx` 中 `<p>` 元素上方：
+## Nén và giải nén
+- **`tar`**
+  - **Mô tả**: Nén và giải nén file.
+  - **Cú pháp**: 
+    - Nén: `tar -cvf [tên archive] [tên thư mục]`
+    - Giải nén: `tar -xvf [tên archive]`
+  - **Ví dụ**: 
+    ```copy
+    $ tar -cvf archive.tar directory
+    $ tar -xvf archive.tar
+    ```
 
-```jsx showLineNumbers filename="/app/page.tsx" copy
-<div
-  className="h-0 w-0 border-b-[30px] border-l-[20px] border-r-[20px] border-b-black border-l-transparent border-r-transparent"
-/>
-```
+## Trình soạn thảo văn bản
+- **`nano`**
+  - **Mô tả**: Trình soạn thảo văn bản đơn giản.
+  - **Cú pháp**: `nano [tên file]`
+  - **Ví dụ**: 
+    ```copy
+    $ nano file.txt
+    ```
 
-<QuizComponent
-  name="在使用上述代码片段时，你看到的形状是"
-  answers={["一个黄色的星星","一个蓝色的三角形","一个黑色的三角形","一个红色的圆圈"]}
-  correctAnswer="一个黑色的三角形"
-/>
+- **`vim`**
+  - **Mô tả**: Trình soạn thảo văn bản mạnh mẽ.
+  - **Cú pháp**: `vim [tên file]`
+  - **Ví dụ**: 
+    ```copy
+    $ vim file.txt
+    ```
 
-如果你更喜欢编写传统的 CSS 规则或者希望将样式与 JSX 代码分开 - CSS Modules 是一个很好的选择。
+## Kết nối từ xa
+- **`ssh`**
+  - **Mô tả**: Kết nối đến máy chủ từ xa qua giao thức SSH.
+  - **Cú pháp**: `ssh [user@host]`
+  - **Ví dụ**: 
+    ```copy
+    $ ssh user@192.168.1.1
+    ```
 
-## CSS Modules
+## Bài tập thực hành
 
-[CSS Modules](https://nextjs.org/docs/pages/building-your-application/styling) 允许你通过自动生成独特的类名将 CSS 限定在一个组件中，这样你就不必担心样式冲突。
+**`Tạo và quản lý thư mục`**
+  - Tạo một thư mục có tên `test_folder`.
+  - Bên trong thư mục `test_folder`, tạo ba file có tên `file1.txt`, `file2.txt`, và `file3.txt`.
+  - Liệt kê các file trong `test_folder`.
+  - Tạo một thư mục con trong `test_folder` có tên `sub_folder`.
 
-在这个课程中，我们将继续使用 Tailwind，但让我们花一点时间看看如何使用 CSS 模块来实现上面小测验的相同效果。
+**`Sao chép, di chuyển và xóa`**
+  - Sao chép `file1.txt` thành `file1_copy.txt` trong cùng thư mục.
+  - Di chuyển `file2.txt` vào thư mục cha.
+  - Xóa `file3.txt` và xác nhận rằng nó đã bị xóa.
 
-在 `/app/ui` 目录下，创建一个名为 `home.module.css` 的新文件，然后添加以下 CSS 规则：
+**`Chỉnh sửa file`**
+  - Mở `file1.txt` bằng `nano` hoặc `vim` và thêm một vài dòng văn bản vào file.
+  - Lưu và thoát khỏi trình soạn thảo.
+  - Tạo một file mới có tên `notes.txt` và ghi lại nội dung bạn đã thêm vào `file1.txt`.
 
-```css showLineNumbers filename="/app/ui/home.module.css" copy
-.shape {
-  height: 0;
-  width: 0;
-  border-bottom: 30px solid black;
-  border-left: 20px solid transparent;
-  border-right: 20px solid transparent;
-}
-```
+**`Thay đổi quyền truy cập`**
+  - Thay đổi quyền truy cập của `file3.txt` (đã xóa) thành chỉ đọc cho người khác.
+  - Tạo lại `file3.txt` và áp dụng quyền truy cập đã thay đổi.
 
-然后，在你的 `/app/page.tsx` 文件中导入这些样式，并用 `styles.shape` 替换你添加的 `<div>` 中的 Tailwind 类名：
+**`Tìm kiếm file`**
+  - Tìm kiếm tất cả các file `.txt` trong `test_folder` và xuất kết quả ra file `search_results.txt`.
 
-```jsx showLineNumbers {1, 5} filename="/app/page.tsx" copy
-import styles from '@/app/ui/home.module.css';
+**`Nén và giải nén`**
+  - Nén `test_folder` thành file `test_folder.tar.gz`.
+  - Giải nén `test_folder.tar.gz` vào một thư mục mới có tên `unzipped_folder`.
 
-//...
-<div className="flex flex-col justify-center gap-6 rounded-lg bg-gray-50 px-6 py-10 md:w-2/5 md:px-20">
-    <div className={styles.shape}></div>;
-// ...
-```
+**`Quản lý tiến trình`**
+  - Mở một terminal mới và chạy một chương trình như `top` hoặc `htop` để xem các tiến trình đang chạy.
+  - Ghi lại ID tiến trình (PID) của một chương trình đang chạy và sử dụng lệnh `kill` để kết thúc tiến trình đó.
 
-保存更改并在浏览器中预览。你应该看到与之前相同的形状。
+**`Kết nối SSH`**
+  - Nếu bạn có một máy chủ SSH, hãy thử kết nối tới nó bằng lệnh `ssh`.
+  - Sau khi kết nối, tạo một file có tên `remote_file.txt` trên máy chủ từ xa và thêm một số nội dung vào đó.
 
-Tailwind 和 CSS 模块是样式化 Next.js 应用程序的两种最常见的方法。使用其中之一取决于个人喜好 - 你甚至可以在同一个应用程序中同时使用它们两者！
+**`Tạo script tự động`**
+  - Viết một script shell đơn giản (ví dụ: `backup.sh`) để tự động sao chép các file `.txt` từ `test_folder` sang một thư mục `backup_folder` (tạo thư mục này nếu chưa có).
+  - Chạy script và xác nhận rằng các file đã được sao chép thành công.
 
-<QuizComponent
-  name="CSS Modules 的一个优势是什么？"
-  answers={[
-    "扩大 CSS 类的全局范围，使其在不同文件中更易管理。",
-    "默认情况下，提供使 CSS 类在组件范围内局部作用的方法，实现更好的模块化，减少样式冲突的风险。",
-    "自动压缩和缩小 CSS 文件以加快页面加载速度。"]}
-  correctAnswer="默认情况下，提供使 CSS 类在组件范围内局部作用的方法，实现更好的模块化，减少样式冲突的风险。"
-/>
-
-## 使用 clsx 库切换类名
-
-在某些情况下，您可能需要根据状态或其他条件有条件地为元素设置样式。
-
-[clsx](https://www.npmjs.com/package/clsx) 是一个库，让您可以轻松地切换类名。我们建议查看[文档](https://github.com/lukeed/clsx)以获取更多详细信息，但以下是基本用法：
-
-* 假设您想要创建一个名为 `InvoiceStatus` 的组件，该组件接受状态。状态可以是 `'pending'` 或 `'paid'`。
-* 如果是 `'paid'`，您希望颜色是绿色。如果是 'pending'，您希望颜色是灰色。
-
-您可以使用 clsx 来有条件地应用类，例如：
-
-```tsx showLineNumbers {9-10} filename="/app/ui/invoices/status.tsx" copy
-import clsx from 'clsx';
- 
-export default function InvoiceStatus({ status }: { status: string }) {
-  return (
-    <span
-      className={clsx(
-        'inline-flex items-center rounded-full px-2 py-1 text-sm',
-        {
-          'bg-gray-100 text-gray-500': status === 'pending',
-          'bg-green-500 text-white': status === 'paid',
-        },
-      )}
-    >
-    // ...
-)}
-```
-
-<QuizComponent
-  name="在代码编辑器中搜索 'clsx'，哪些组件使用它来有条件地应用类名？"
-  answers={[
-    "status.tsx 和 pagination.tsx",
-    "table.tsx 和 status.tsx",
-    "nav-links.tsx 和 table.tsx"]}
-  correctAnswer="status.tsx 和 pagination.tsx"
-/>
-
-## 其他样式解决方案
-
-除了我们讨论过的方法之外，您还可以使用以下方式为 Next.js 应用程序添加样式：
-
-* Sass： 允许您导入 `.css` 和 `.scss` 文件。
-* CSS-in-JS 库： 例如 [styled-jsx](https://github.com/vercel/styled-jsx)、[styled-components](https://github.com/vercel/next.js/tree/canary/examples/with-styled-components) 和 [emotion](https://github.com/vercel/next.js/tree/canary/examples/with-emotion)。
-* 查看 [CSS 文档](https://nextjs.org/docs/app/building-your-application/styling)以获取更多信息。
+**`Quản lý file với `find` và `grep``**
+  - Sử dụng lệnh `find` để tìm kiếm tất cả các file trong `test_folder` có kích thước lớn hơn 1KB.
+  - Sử dụng `grep` để tìm kiếm một chuỗi cụ thể trong tất cả các file `.txt` trong `test_folder`.
