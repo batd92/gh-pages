@@ -1,261 +1,46 @@
 # Hướng dẫn Các lệnh cơ bản trong Linux
 
-## Thông tin hệ thống
-- **`pwd`**
-  - **Mô tả**: Hiển thị đường dẫn thư mục hiện tại.
-  - **Cú pháp**: `pwd`
-  - **Ví dụ**: 
+# Caì đặt Vagrant, VirtualBox Để Tạo Máy Ảo Ubuntu (MacOS)
+
+## Vagrant
+  - **Install**: 
     ```copy
-    $ pwd
-    /home/user
+    brew install --cask vagrant
     ```
 
-- **`whoami`**
-  - **Mô tả**: Hiển thị tên người dùng đang đăng nhập.
-  - **Cú pháp**: `whoami`
-  - **Ví dụ**: 
+  - **Check version**: 
     ```copy
-    $ whoami
-    user
+    vagrant --version
     ```
 
-- **`history`**
-  - **Mô tả**: Hiển thị danh sách các lệnh đã thực hiện trước đó.
-  - **Cú pháp**: `history`
-  - **Ví dụ**: 
+## VirtualBox
+
+  - **Note**:  Please install one of the supported versions listed below to use Vagrant: 4.0, 4.1, 4.2, 4.3, 5.0, 5.1, 5.2, 6.0, 6.1, 7.0
+  - **Install**: 
     ```copy
-    $ history
+    brew install --cask virtualbox
     ```
 
-## Quản lý thư mục và file
-- **`cd`**
-  - **Mô tả**: Thay đổi thư mục hiện tại.
-  - **Cú pháp**: `cd [đường dẫn]`
-  - **Ví dụ**: 
+  - **Check version**: 
     ```copy
-    $ cd /home/user/Documents
+    VBoxManage --version
     ```
 
-- **`ls`**
-  - **Mô tả**: Liệt kê các file và thư mục trong thư mục hiện tại.
-  - **Cú pháp**: `ls [tùy chọn]`
-  - **Ví dụ**: 
+
+## Cấu hình Máy Ảo Ubuntu
+  - **Cấu hình file Vagrant**
+
     ```copy
-    $ ls -l
-    ```
+    Vagrant.configure("2") do |config|
+      config.vm.box = "ubuntu/bionic64" # https://portal.cloud.hashicorp.com/vagrant/discover
+      config.vm.network "private_network", type: "dhcp" # Mạng nội bộ
+      config.vm.provider "virtualbox" do |vb|
+        vb.memory = "2048" # Số RAM cho máy ảo
+        vb.cpus = 2 # Số CPU cho máy ảo
+      end
+    end
 
-- **`mkdir`**
-  - **Mô tả**: Tạo một thư mục mới.
-  - **Cú pháp**: `mkdir [tên thư mục]`
-  - **Ví dụ**: 
+  - **Run Vagrant**: 
     ```copy
-    $ mkdir new_folder
+    vagrant up --provider=virtualbox
     ```
-
-- **`touch`**
-  - **Mô tả**: Tạo một file mới hoặc cập nhật thời gian sửa đổi của file hiện có.
-  - **Cú pháp**: `touch [tên file]`
-  - **Ví dụ**: 
-    ```copy
-    $ touch newfile.txt
-    ```
-
-- **`rm`**
-  - **Mô tả**: Xóa file hoặc thư mục.
-  - **Cú pháp**: `rm [tên file]`
-  - **Ví dụ**: 
-    ```copy
-    $ rm file.txt
-    ```
-
-- **`cp`**
-  - **Mô tả**: Sao chép file hoặc thư mục.
-  - **Cú pháp**: `cp [tên file nguồn] [tên file đích]`
-  - **Ví dụ**: 
-    ```copy
-    $ cp file.txt copy_file.txt
-    ```
-
-- **`mv`**
-  - **Mô tả**: Di chuyển file hoặc thư mục, hoặc đổi tên chúng.
-  - **Cú pháp**: `mv [tên file nguồn] [tên file đích]`
-  - **Ví dụ**: 
-    ```copy
-    $ mv oldfile.txt newfile.txt
-    ```
-
-## Quản lý quyền truy cập
-- **`chmod`**
-  - **Mô tả**: Thay đổi quyền truy cập của file hoặc thư mục.
-  - **Cú pháp**: `chmod [quyền] [tên file]`
-  - **Ví dụ**: 
-    ```copy
-    $ chmod 755 script.sh
-    ```
-
-- **`chown`**
-  - **Mô tả**: Thay đổi chủ sở hữu của file hoặc thư mục.
-  - **Cú pháp**: `chown [người dùng]:[nhóm] [tên file]`
-  - **Ví dụ**: 
-    ```copy
-    $ chown user:group file.txt
-    ```
-
-## Tìm kiếm và lọc
-- **`find`**
-  - **Mô tả**: Tìm kiếm file và thư mục trong hệ thống.
-  - **Cú pháp**: `find [đường dẫn] -name [tên file]`
-  - **Ví dụ**: 
-    ```copy
-    $ find /home/user -name "*.txt"
-    ```
-
-- **`grep`**
-  - **Mô tả**: Tìm kiếm chuỗi trong file.
-  - **Cú pháp**: `grep [chuỗi] [tên file]`
-  - **Ví dụ**: 
-    ```copy
-    $ grep "hello" file.txt
-    ```
-
-## Quản lý tiến trình
-- **`ps`**
-  - **Mô tả**: Hiển thị thông tin về các tiến trình đang chạy.
-  - **Cú pháp**: `ps [tùy chọn]`
-  - **Ví dụ**: 
-    ```copy
-    $ ps aux
-    ```
-
-- **`kill`**
-  - **Mô tả**: Kết thúc một tiến trình.
-  - **Cú pháp**: `kill [PID]`
-  - **Ví dụ**: 
-    ```copy
-    $ kill 1234
-    ```
-
-## Thông tin về đĩa
-- **`df`**
-  - **Mô tả**: Hiển thị thông tin về dung lượng đĩa.
-  - **Cú pháp**: `df [tùy chọn]`
-  - **Ví dụ**: 
-    ```copy
-    $ df -h
-    ```
-
-- **`du`**
-  - **Mô tả**: Kiểm tra dung lượng của file và thư mục.
-  - **Cú pháp**: `du [tùy chọn] [đường dẫn]`
-  - **Ví dụ**: 
-    ```copy
-    $ du -sh /path/to/directory
-    ```
-
-## Tải và truyền file
-- **`wget`**
-  - **Mô tả**: Tải file từ internet.
-  - **Cú pháp**: `wget [URL]`
-  - **Ví dụ**: 
-    ```copy
-    $ wget http://example.com/file
-    ```
-
-- **`curl`**
-  - **Mô tả**: Gửi yêu cầu HTTP và lấy thông tin từ web.
-  - **Cú pháp**: `curl [URL]`
-  - **Ví dụ**: 
-    ```copy
-    $ curl http://example.com
-    ```
-
-- **`scp`**
-  - **Mô tả**: Sao chép file giữa các máy tính qua SSH.
-  - **Cú pháp**: `scp [tên file] [user@host:/path/to/destination]`
-  - **Ví dụ**: 
-    ```copy
-    $ scp file.txt user@remotehost:/path/to/destination
-    ```
-
-## Nén và giải nén
-- **`tar`**
-  - **Mô tả**: Nén và giải nén file.
-  - **Cú pháp**: 
-    - Nén: `tar -cvf [tên archive] [tên thư mục]`
-    - Giải nén: `tar -xvf [tên archive]`
-  - **Ví dụ**: 
-    ```copy
-    $ tar -cvf archive.tar directory
-    $ tar -xvf archive.tar
-    ```
-
-## Trình soạn thảo văn bản
-- **`nano`**
-  - **Mô tả**: Trình soạn thảo văn bản đơn giản.
-  - **Cú pháp**: `nano [tên file]`
-  - **Ví dụ**: 
-    ```copy
-    $ nano file.txt
-    ```
-
-- **`vim`**
-  - **Mô tả**: Trình soạn thảo văn bản mạnh mẽ.
-  - **Cú pháp**: `vim [tên file]`
-  - **Ví dụ**: 
-    ```copy
-    $ vim file.txt
-    ```
-
-## Kết nối từ xa
-- **`ssh`**
-  - **Mô tả**: Kết nối đến máy chủ từ xa qua giao thức SSH.
-  - **Cú pháp**: `ssh [user@host]`
-  - **Ví dụ**: 
-    ```copy
-    $ ssh user@192.168.1.1
-    ```
-
-## Bài tập thực hành
-
-**`Tạo và quản lý thư mục`**
-  - Tạo một thư mục có tên `test_folder`.
-  - Bên trong thư mục `test_folder`, tạo ba file có tên `file1.txt`, `file2.txt`, và `file3.txt`.
-  - Liệt kê các file trong `test_folder`.
-  - Tạo một thư mục con trong `test_folder` có tên `sub_folder`.
-
-**`Sao chép, di chuyển và xóa`**
-  - Sao chép `file1.txt` thành `file1_copy.txt` trong cùng thư mục.
-  - Di chuyển `file2.txt` vào thư mục cha.
-  - Xóa `file3.txt` và xác nhận rằng nó đã bị xóa.
-
-**`Chỉnh sửa file`**
-  - Mở `file1.txt` bằng `nano` hoặc `vim` và thêm một vài dòng văn bản vào file.
-  - Lưu và thoát khỏi trình soạn thảo.
-  - Tạo một file mới có tên `notes.txt` và ghi lại nội dung bạn đã thêm vào `file1.txt`.
-
-**`Thay đổi quyền truy cập`**
-  - Thay đổi quyền truy cập của `file3.txt` (đã xóa) thành chỉ đọc cho người khác.
-  - Tạo lại `file3.txt` và áp dụng quyền truy cập đã thay đổi.
-
-**`Tìm kiếm file`**
-  - Tìm kiếm tất cả các file `.txt` trong `test_folder` và xuất kết quả ra file `search_results.txt`.
-
-**`Nén và giải nén`**
-  - Nén `test_folder` thành file `test_folder.tar.gz`.
-  - Giải nén `test_folder.tar.gz` vào một thư mục mới có tên `unzipped_folder`.
-
-**`Quản lý tiến trình`**
-  - Mở một terminal mới và chạy một chương trình như `top` hoặc `htop` để xem các tiến trình đang chạy.
-  - Ghi lại ID tiến trình (PID) của một chương trình đang chạy và sử dụng lệnh `kill` để kết thúc tiến trình đó.
-
-**`Kết nối SSH`**
-  - Nếu bạn có một máy chủ SSH, hãy thử kết nối tới nó bằng lệnh `ssh`.
-  - Sau khi kết nối, tạo một file có tên `remote_file.txt` trên máy chủ từ xa và thêm một số nội dung vào đó.
-
-**`Tạo script tự động`**
-  - Viết một script shell đơn giản (ví dụ: `backup.sh`) để tự động sao chép các file `.txt` từ `test_folder` sang một thư mục `backup_folder` (tạo thư mục này nếu chưa có).
-  - Chạy script và xác nhận rằng các file đã được sao chép thành công.
-
-**`Quản lý file với `find` và `grep``**
-  - Sử dụng lệnh `find` để tìm kiếm tất cả các file trong `test_folder` có kích thước lớn hơn 1KB.
-  - Sử dụng `grep` để tìm kiếm một chuỗi cụ thể trong tất cả các file `.txt` trong `test_folder`.
